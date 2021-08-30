@@ -1,16 +1,15 @@
 // var API = require('indian-stock-exchange');
-const express = require("express");
-const app = express.Router();
-var API = require('./app');
+var express = require("express");
+var API = require('./index');
 
 var BSEAPI = API.BSE;
 var NSEAPI = API.NSE;
 
-// var app = express();
+var app = express();
 
-// app.listen(3000, () => {
-//   console.log("Server running on port 3000");
-// });
+app.listen(3000, () => {
+  console.log("Server running on port 3000");
+});
 
 // National Stock Exchange (NSE) APIS
 

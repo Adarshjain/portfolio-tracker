@@ -113,7 +113,6 @@ function getQuotes(symbol) {
 }
 
 function getQuoteInfo(symbol) {
-  console.log(QUOTE_INFO_URL + encodeURIComponent(symbol));
   return axios.get(QUOTE_INFO_URL + encodeURIComponent(symbol), {
     headers: {
       Referer: GET_QUOTE_URL + encodeURIComponent(symbol),

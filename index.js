@@ -1,10 +1,9 @@
-const express = require("express");
-const app = express();
-const product = require("./api/all");
+var BSEAPI = require('./bse/index');
+var NSEAPI = require('./nse/index');
 
-app.use(express.json({ extended: false }));
+var API = {
+	BSE: BSEAPI,
+	NSE: NSEAPI
+};
 
-app.use("/api", product);
-
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => console.log(`Server is running in port ${PORT}`));
+module.exports = API;
