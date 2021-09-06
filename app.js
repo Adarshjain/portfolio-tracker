@@ -1,6 +1,7 @@
 // var API = require('indian-stock-exchange');
 var express = require("express");
 var API = require('./index');
+var axios = require('axios');
 
 var BSEAPI = API.BSE;
 var NSEAPI = API.NSE;
@@ -8,13 +9,21 @@ var NSEAPI = API.NSE;
 var app = express();
 
 app.listen(process.env.PORT || 3000, () => {
-  console.log("Server running on port " + process.env.PORT || 3000);
+  console.log("Server running on port " + (process.env.PORT || 3000));
 });
 
 // National Stock Exchange (NSE) APIS
 
 app.get("/", (req, res, next) => {
-    res.json("App runnnong");
+    axios.get("https://jsonplaceholder.typicode.com/todos/1", {
+        transformResponse: function (data) {
+            return {
+                status: JSON.parse(data)
+            };
+        }
+    }).then(function (resp) {
+        res.json("App runnnong \n" + resp);
+    });
 });
 
 // Get the stock market status (open/closed) - JSON
