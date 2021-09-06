@@ -15,14 +15,14 @@ app.listen(process.env.PORT || 3000, () => {
 // National Stock Exchange (NSE) APIS
 
 app.get("/", (req, res, next) => {
-    axios.get("https://jsonplaceholder.typicode.com/todos/1", {
+    axios.get("https://www1.nseindia.com//emerge/homepage/smeNormalMktStatus.json", {
         transformResponse: function (data) {
             return {
                 status: JSON.parse(data)
             };
         }
     }).then(function (resp) {
-        res.json("App runnnong \n" + resp);
+        res.json("App runnnong \n" + JSON.stringify(resp));
     });
 });
 
