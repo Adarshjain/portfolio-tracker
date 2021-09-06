@@ -14,19 +14,23 @@ app.listen(process.env.PORT || 3000, () => {
 
 // National Stock Exchange (NSE) APIS
 
-app.get("/", (req, res, next) => {
-    axios.get("https://www1.nseindia.com//emerge/homepage/smeNormalMktStatus.json", {
-        transformResponse: function (data) {
-            return {
-                status: JSON.parse(data)
-            };
-        }
-    }).then(function (resp) {
+app.get("/", async (req, res, next) => {
+    try {
+        console.log('---------request started-------')
+        const resp = await axios.get("https://www1.nseindia.com//emerge/homepage/smeNormalMktStatus.json", {
+            transformResponse: function (data) {
+                return {
+                    status: JSON.parse(data)
+                };
+            }
+        })
+        console.log('--------req received----------')
         res.json("App runnnong \n" + JSON.stringify(resp));
-    }).catch(err => {
-        res.json("App runnnong \n" + err);
-
-    });
+    } catch (e) {
+        console.log("error: " + e);
+        res.json("App runnnong \n" + e);
+    }
+    console.log('---------outide--------')
 });
 
 // Get the stock market status (open/closed) - JSON
