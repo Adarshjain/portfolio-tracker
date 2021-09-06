@@ -17,15 +17,16 @@ app.listen(process.env.PORT || 3000, () => {
 app.get("/", async (req, res, next) => {
     try {
         console.log('---------request started-------')
-        const resp = await axios.get("https://www1.nseindia.com//emerge/homepage/smeNormalMktStatus.json", {
+        const resp = await axios.get("https://www1.nseindia.com/emerge/homepage/smeNormalMktStatus.json", {
             transformResponse: function (data) {
+                console.log(data)
                 return {
                     status: JSON.parse(data)
                 };
             }
         })
         console.log('--------req received----------')
-        res.json("App runnnong \n" + JSON.stringify(resp));
+        res.json("App runnnong \n" + JSON.stringify(resp.data));
     } catch (e) {
         console.log("error: " + e);
         res.json("App runnnong \n" + e);
