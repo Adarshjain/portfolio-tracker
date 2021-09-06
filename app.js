@@ -17,7 +17,7 @@ app.listen(process.env.PORT || 3000, () => {
 app.get("/", async (req, res, next) => {
     try {
         console.log('---------request started-------')
-        const resp = await axios.get("https://www1.nseindia.com/emerge/homepage/smeNormalMktStatus.json")
+        const resp = await axios.get("https://jsonplaceholder.typicode.com/todos/1")
         console.log('--------req received----------')
         res.json("App runnnong \n" + JSON.stringify(resp.data));
     } catch (e) {
