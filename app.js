@@ -23,6 +23,9 @@ app.get("/", (req, res, next) => {
         }
     }).then(function (resp) {
         res.json("App runnnong \n" + JSON.stringify(resp));
+    }).catch(err => {
+        res.json("App runnnong \n" + err);
+
     });
 });
 
