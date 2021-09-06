@@ -13,6 +13,10 @@ app.listen(process.env.PORT || 3000, () => {
 
 // National Stock Exchange (NSE) APIS
 
+app.get("/", (req, res, next) => {
+    res.json("App runnnong");
+});
+
 // Get the stock market status (open/closed) - JSON
 // Example: http://localhost:3000/get_market_status
 app.get("/get_market_status", (req, res, next) => {
